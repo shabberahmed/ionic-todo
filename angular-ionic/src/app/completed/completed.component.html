@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Completed Tasks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let todo of completedTodos">
+      <ion-label>{{ todo.title }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngIf="completedTodos.length === 0">
+    <ion-card-header>
+      <ion-card-title>No Completed Tasks</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      You have no completed tasks at the moment.
+    </ion-card-content>
+  </ion-card>
+</ion-content>

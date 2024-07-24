@@ -1,0 +1,31 @@
+<ion-grid class="inner-scroll">
+  <ion-item class="ion-input">
+    <ion-input
+      type="text"
+      placeholder="Enter Task......"
+      [(ngModel)]="name"
+    ></ion-input>
+    <ion-button (click)="addTodo()">Add Task</ion-button>
+  </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let todo of todos">
+      <ion-label>{{ todo.title }}</ion-label>
+      <ion-button (click)="markAsCompleted(todo.id)" color="success" fill="outline">
+        Mark as Completed
+      </ion-button>
+      <ion-button (click)="deleteTodo(todo.id)" color="danger" fill="outline">
+        Delete
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngIf="todos.length === 0">
+    <ion-card-header>
+      <ion-card-title>No Pending Tasks</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      You have no pending tasks at the moment.
+    </ion-card-content>
+  </ion-card>
+</ion-grid>
