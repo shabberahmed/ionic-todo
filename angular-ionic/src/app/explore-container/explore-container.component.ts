@@ -26,7 +26,9 @@ export class ExploreContainerComponent implements OnInit {
       }
     );
   }
-
+IonViewWillEnter(){
+  console.log("new hook cc")
+}
   addTodo() {
     if (!this.name.trim()) return; // Avoid adding empty tasks
 
