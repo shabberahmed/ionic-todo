@@ -1,4 +1,4 @@
-<ion-grid class="inner-scroll">
+<ion-grid class="inner-scroll" style="padding: 10px;overflow: scroll;">
   <ion-item class="ion-input">
     <ion-input
       type="text"
@@ -10,15 +10,23 @@
 
   <ion-list>
     <ion-item *ngFor="let todo of todos">
+   <div style='display:flex;flex-direction:column;'>
+
+    <div class="todo-content">
       <ion-label>{{ todo.title }}</ion-label>
+    </div>
+    <div class="todo-actions">
       <ion-button (click)="markAsCompleted(todo.id)" color="success" fill="outline">
-        Mark as Completed
+        Completed
       </ion-button>
       <ion-button (click)="deleteTodo(todo.id)" color="danger" fill="outline">
         Delete
       </ion-button>
+    </div>
+   </div>
     </ion-item>
   </ion-list>
+  
 
   <ion-card *ngIf="todos.length === 0">
     <ion-card-header>

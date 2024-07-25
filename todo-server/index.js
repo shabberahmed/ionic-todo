@@ -6,6 +6,7 @@ const app = express();
 const port = 3001;
 
 todoId = 6;
+const hostname = '192.168.1.7'; // Replace with your IP address
 
 let todos = [
   { id: 1, title: "Learn Kheema Pasta", completed: false, category: "food" },
@@ -86,6 +87,6 @@ app.put("/todos/:id", (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(3000, () => {
+  console.log(`Server is running on http://${hostname}:${3000}`);
 });

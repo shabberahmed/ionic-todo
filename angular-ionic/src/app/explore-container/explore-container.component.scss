@@ -23,7 +23,6 @@
   text-decoration: none;
 }
 body{
-  background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20220429/pngtree-memopad-instagram-templates-to-do-list-card-image_1112089.jpg') !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
@@ -32,7 +31,6 @@ body{
   z-index: 29999;
 }
 .inner-scroll{
-  background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20220429/pngtree-memopad-instagram-templates-to-do-list-card-image_1112089.jpg') !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
@@ -40,4 +38,25 @@ body{
   height: 100vh;
   z-index: 29999;
   overflow: hidden;
+}
+.todo-content {
+  flex: 1;
+  display: flex;
+ 
+}
+
+.todo-actions {
+  display: flex;
+ justify-content:'space-evenly'
+}
+
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+ion-label {
+  margin-bottom: 4px; /* Optional: Add some space between title and buttons */
 }

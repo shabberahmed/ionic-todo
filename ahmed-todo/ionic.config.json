@@ -1,7 +1,0 @@
-{
-  "name": "ahmed-todo",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react-vite"
-}
