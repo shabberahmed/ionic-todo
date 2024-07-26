@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { TodoService } from '../todo.service';
 
 @Component({
@@ -6,15 +6,17 @@ import { TodoService } from '../todo.service';
   templateUrl: './completed.component.html',
   styleUrls: ['./completed.component.scss'],
 })
-export class CompletedComponent implements OnInit,OnChanges {
+export class CompletedComponent implements OnInit,OnChanges ,OnDestroy{
   completedTodos: any[] = [];
-@Input() flag: boolean = false
+@Input() flag = false
   constructor(private todoService: TodoService) {}
 
   ngOnInit() {
     console.log('ngOnInit called');
+  if(this.flag){
     this.loadCompletedTodos();
   }
+}
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges called',changes);
     if (changes['flag'].currentValue) {
@@ -35,5 +37,8 @@ export class CompletedComponent implements OnInit,OnChanges {
         console.error('Error fetching completed todos', error);
       }
     );
+  }
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy called');
   }
 }

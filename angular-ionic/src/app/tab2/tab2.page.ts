@@ -8,19 +8,24 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 export class Tab2Page implements OnInit,OnDestroy{
 
   constructor() {}
+  sendFlagtoReload=false
   ngOnInit(): void {
-      console.log("tab2 called")
+    console.log("component called")
   }
-  setFlagForReload:boolean = false
   ionViewWillEnter() {
     console.log('hi');
-    this.setFlagForReload = true
-    console.log(this.setFlagForReload,"rotate")
+    this.sendFlagtoReload=true
+
   }
-  ionViewDidEnter(){
-    console.log("new hook")
+  // ionViewDidEnter(){
+  //   this.sendFlagtoReload = false
+  //   }
+  ionViewWillLeave() {
+    console.log("component destroyed")
+    this.sendFlagtoReload = false
   }
   ngOnDestroy(): void {
-      this.setFlagForReload = false
+    console.log("component destroyed")
+      this.sendFlagtoReload = false
   }
 }

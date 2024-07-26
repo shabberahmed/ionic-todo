@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TodoService {
-  private apiUrl = 'https://temp-o90n.onrender.com/todos';
+  private apiUrl = 'http://localhost:3000/todos';
+
 
   constructor(private http: HttpClient) { }
 

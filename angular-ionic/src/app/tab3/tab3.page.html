@@ -13,5 +13,95 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input formControlName="firstName"></ion-input>
+    </ion-item>
+    <ion-note *ngIf="form.get('firstName')?.hasError('required') && form.get('firstName')?.touched" color="danger">
+      First Name is required
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input formControlName="lastName"></ion-input>
+    </ion-item>
+    <ion-note *ngIf="form.get('lastName')?.hasError('required') && form.get('lastName')?.touched" color="danger">
+      Last Name is required
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="floating">Mobile Number (e.g., +123 1234567890)</ion-label>
+      <ion-input formControlName="mobileNumber"></ion-input>
+    </ion-item>
+    <ion-note *ngIf="form.get('mobileNumber')?.hasError('required') && form.get('mobileNumber')?.touched" color="danger">
+      Mobile Number is required
+    </ion-note>
+    <ion-note *ngIf="form.get('mobileNumber')?.hasError('pattern') && form.get('mobileNumber')?.touched" color="danger">
+      Mobile Number is invalid
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+    <ion-note *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched" color="danger">
+      Email is required
+    </ion-note>
+    <ion-note *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched" color="danger">
+      Email is invalid
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="floating">Age</ion-label>
+      <ion-input type="number" formControlName="age"></ion-input>
+    </ion-item>
+    <ion-note *ngIf="form.get('age')?.hasError('required') && form.get('age')?.touched" color="danger">
+      Age is required
+    </ion-note>
+    <ion-note *ngIf="form.get('age')?.hasError('min') && form.get('age')?.touched" color="danger">
+      Age must be at least 18
+    </ion-note>
+
+    <div formArrayName="addresses">
+      <div *ngFor="let address of addresses.controls; let i=index" [formGroupName]="i">
+        <ion-item>
+          <ion-label position="floating">Street</ion-label>
+          <ion-input formControlName="street"></ion-input>
+        </ion-item>
+        <ion-note *ngIf="address.get('street')?.hasError('required') && address.get('street')?.touched" color="danger">
+          Street is required
+        </ion-note>
+
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <ion-input formControlName="city"></ion-input>
+        </ion-item>
+        <ion-note *ngIf="address.get('city')?.hasError('required') && address.get('city')?.touched" color="danger">
+          City is required
+        </ion-note>
+
+        <ion-item>
+          <ion-label position="floating">State</ion-label>
+          <ion-input formControlName="state"></ion-input>
+        </ion-item>
+        <ion-note *ngIf="address.get('state')?.hasError('required') && address.get('state')?.touched" color="danger">
+          State is required
+        </ion-note>
+
+        <ion-item>
+          <ion-label position="floating">Postal Code</ion-label>
+          <ion-input formControlName="postalCode"></ion-input>
+        </ion-item>
+        <ion-note *ngIf="address.get('postalCode')?.hasError('required') && address.get('postalCode')?.touched" color="danger">
+          Postal Code is required
+        </ion-note>
+
+        <ion-button (click)="removeAddress(i)">Remove Address</ion-button>
+      </div>
+    </div>
+
+    <ion-button (click)="addAddress()">Add Address</ion-button>
+    <ion-button type="submit" [disabled]="form.invalid">Submit</ion-button>
+  </form>
 </ion-content>
